@@ -8,19 +8,10 @@ var url = process.env.COUCH || 'http://localhost:5984'
 var source = path.join(__dirname, 'fixtures')
 var couch = nano(url)
 
-function cleanup(callback) {
-  callback()
-}
-
-
 test('basics', function(t) {
-  cleanup(function() {
-    bootstrap(url, source, function(error, response) {
-      t.equal(error, null)
+  bootstrap(url, source, function(error, response) {
+    t.notOk(error, 'no error occured')
 
-      console.log(response)
-
-      t.end()
-    })
+    t.end()
   })
 })
