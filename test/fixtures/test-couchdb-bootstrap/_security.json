@@ -1,0 +1,15 @@
+{
+   "members" : {
+      "roles" : [],
+      "names" : [
+        "alice@example.com",
+        "bob@example.com"
+      ]
+   },
+   "admins" : {
+      "roles" : [],
+      "names" : [
+         "alice@example.com"
+      ]
+   }
+}
