@@ -7,6 +7,10 @@ Bootstrap CouchDB database:
 * Deploy Design Documents
 * Create User Accounts
 
+
+**:warning: Not ready now.**
+
+
 ## Example
 Given the following directory layout:
 
@@ -44,7 +48,7 @@ Or via CLI:
 couchdb-bootstrap http://localhost:5984 /path/to/my/project/couchdb -u jo -p secure
 ```
 
-## `bootstrap(url, source, [options], [callback])`
+### `bootstrap(url, source, [options], [callback])`
 
 ## Tests
 ```sh
