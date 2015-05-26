@@ -7,6 +7,9 @@ Bootstrap CouchDB database:
 * Deploy Design Documents
 * Create User Accounts
 
+[![Build
+Status](https://magnum.travis-ci.com/eHealthAfrica/couchdb-bootstrap.svg?token=17MT1MYgsDEiy3cPsdVy&branch=master)](https://magnum.travis-ci.com/eHealthAfrica/couchdb-bootstrap)
+
 
 **:warning: Not ready now.**
 
