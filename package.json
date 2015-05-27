@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "async": "^1.0.0",
-    "couch-push": "^1.2.0",
+    "couch-push": "^1.2.1",
     "glob": "^5.0.10",
     "minimist": "^1.1.1"
   }
