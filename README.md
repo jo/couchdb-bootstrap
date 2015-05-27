@@ -1,17 +1,15 @@
 # CouchDB Bootstrap
 Bootstrap CouchDB database:
 
-* Configure CouchDB
-* Create Database
-* Setup `_security` Settings
-* Deploy Design Documents
-* Create User Accounts
+- [ ] Configure CouchDB
+- [x] Create Database
+- [x] Setup `_security` Settings
+- [x] Deploy Design Documents
+- [x] Create User Accounts
+- [ ] Initiate Replications
 
 [![Build
 Status](https://magnum.travis-ci.com/eHealthAfrica/couchdb-bootstrap.svg?token=17MT1MYgsDEiy3cPsdVy&branch=master)](https://magnum.travis-ci.com/eHealthAfrica/couchdb-bootstrap)
-
-
-**:warning: Not ready now.**
 
 
 ## Example
