@@ -21,8 +21,8 @@ Given the following directory layout:
 /path/to/my/project/couchdb
 ├── _config.json
 ├── _users
-│   ├── org.couchdb.user:alice@example.com.json
-│   └── org.couchdb.user:bob@example.com.json
+│   ├── alice.json
+│   └── bob.json
 ├── alicedb
 │   └── _security.json
 └── bobdb
