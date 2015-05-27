@@ -1,6 +1,6 @@
 var test = require('tape')
 var helper = require('./helper')
-var configureDatabases = require('../lib/configure-dbs')
+var configureDatabases = require('../lib/configure-databases')
 
 function setup(callback) {
   helper.setup(helper.createDatabases.bind(this, callback))

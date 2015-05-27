@@ -1,6 +1,6 @@
 var test = require('tape')
 var helper = require('./helper')
-var createDatabases = require('../lib/create-dbs')
+var createDatabases = require('../lib/create-databases')
 
 test('create databases', function(t) {
   helper.setup(function() {

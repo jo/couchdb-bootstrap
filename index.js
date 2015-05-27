@@ -1,8 +1,8 @@
 var path = require('path')
 var async = require('async')
 
-var createDatabases = require('./lib/create-dbs')
-var configureDatabases = require('./lib/configure-dbs')
+var createDatabases = require('./lib/create-databases')
+var configureDatabases = require('./lib/configure-databases')
 var pushDocs = require('./lib/push-docs')
 
 module.exports = function(url, source, options, callback) {
