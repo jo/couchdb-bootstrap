@@ -40,7 +40,7 @@ You now can boostrap the project programmatically:
 
 ```js
 var bootstrap = require('couchdb-bootstrap')
-bootstrap('http://localhost:5984', '/path/to/my/project/couchdb', function(error, response) {
+bootstrap('http://localhost:5984', 'project/couchdb', function(error, response) {
   // { ok: true }
 })
 ```
