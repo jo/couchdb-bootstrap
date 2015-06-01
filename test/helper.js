@@ -15,6 +15,8 @@ exports.docs = {
   ]
 }
 
+exports.configSection = 'couchdb-bootstrap'
+
 exports.dbnames = Object.keys(exports.docs)
   .filter(function(dbname) {
     return dbname[0] !== '_'
@@ -31,4 +33,21 @@ exports.setup = function(callback) {
 
 exports.createDatabases = function(callback) {
   async.each(exports.dbnames, exports.couch.db.create, callback)
+}
+
+// There is an issue with section deletion in CouchDB.
+// You cannot delete an entire section:
+// $ curl -XDELETE http://localhost:5984/_config/couchdb-bootstrap
+// {"error":"method_not_allowed","reason":"Only GET,PUT,DELETE allowed"}
+exports.clearConfig = function(callback) {
+  exports.couch.request({
+    path: '_config/' + exports.configSection
+  }, function(error, config) {
+    async.map(Object.keys(config), function(key, next) {
+      exports.couch.request({
+        method: 'DELETE',
+        path: '_config/' + exports.configSection + '/' + encodeURIComponent(key)
+      }, next)
+    }, callback)
+  })
 }

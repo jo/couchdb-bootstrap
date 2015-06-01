@@ -1,14 +1,14 @@
 var test = require('tape')
 var helper = require('./helper')
-var configureDatabases = require('../lib/configure-databases')
+var pushSecurities = require('../lib/push-securities')
 
 function setup(callback) {
   helper.setup(helper.createDatabases.bind(this, callback))
 }
 
-test('configure databases', function(t) {
+test('setup database securities', function(t) {
   setup(function() {
-    configureDatabases(helper.url, helper.source, {}, function(error, responses) {
+    pushSecurities(helper.url, helper.source, {}, function(error, responses) {
       t.notOk(error, 'no error occured')
 
       helper.dbnames.forEach(function(dbname) {
