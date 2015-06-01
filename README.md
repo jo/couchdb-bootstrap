@@ -11,8 +11,7 @@ Bootstrap CouchDB database:
 Status](https://magnum.travis-ci.com/eHealthAfrica/couchdb-bootstrap.svg?token=17MT1MYgsDEiy3cPsdVy&branch=master)](https://magnum.travis-ci.com/eHealthAfrica/couchdb-bootstrap)
 
 
-## Example
-Given the following directory layout:
+## Directory
 
 ```
 /path/to/my/project/couchdb
@@ -33,22 +32,20 @@ Given the following directory layout:
     └── _security.json
 ```
 
-You now can boostrap the project programmatically:
+## API
 
 ```js
 var bootstrap = require('couchdb-bootstrap')
 bootstrap('http://localhost:5984', 'project/couchdb', function(error, response) {
-  // { ok: true }
+  // here we go
 })
 ```
 
-Or via CLI:
+## CLI
 
 ```sh
-couchdb-bootstrap http://localhost:5984 /path/to/my/project/couchdb -u jo -p secure
+couchdb-bootstrap http://localhost:5984 /path/to/my/project/couchdb
 ```
-
-### `bootstrap(url, source, [options], [callback])`
 
 ## Tests
 ```sh
