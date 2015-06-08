@@ -2,12 +2,12 @@
 Bootstrap CouchDB database:
 
 - [x] Configure CouchDB
-- [x] Create Database
+- [x] Create Databases unless they exist
 - [x] Setup `_security` Settings
 - [x] Deploy (Design) Documents, Replications and Users
 
 [![Build
-Status](https://magnum.travis-ci.com/eHealthAfrica/couchdb-bootstrap.svg?token=17MT1MYgsDEiy3cPsdVy&branch=master)](https://magnum.travis-ci.com/eHealthAfrica/couchdb-bootstrap)
+Status](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap.svg?branch=master)](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap)
 
 
 ## Directory
