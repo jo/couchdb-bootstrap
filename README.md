@@ -23,6 +23,17 @@ CLI:
 * [couchdb-push](https://github.com/jo/couchdb-push) - Push documens: users, replications, design docs and normal documents
 * [couchdb-secure](https://github.com/eHealthAfrica/couchdb-secure) - Secure databases: write security object
 
+Think about CouchDB Bootstrap as a toplevel manager, which reads a directory of
+databases and optional `_config` and hands each file over to the appropriate tool.
+
+In the directory tree below `roject/couchdb/_config.json` is handed to
+[couchdb-configure](https://github.com/eHealthAfrica/couchdb-configure),
+`project/couchdb/_replicator/setup-alice.json`,
+`project/couchdb/myapp/_design/myapp.js`
+`project/couchdb/myapp/adoc.json` are handed (beside others) to
+[couchdb-push](https://github.com/jo/couchdb-push)
+and `project/couchdb/myapp-alice/_security.json` to
+[couchdb-secure](https://github.com/eHealthAfrica/couchdb-secure).
 
 ## Directory
 
