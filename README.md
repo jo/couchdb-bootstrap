@@ -31,7 +31,7 @@ Status](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap.svg?branch=master)
     └── _security.json
 ```
 
-See [couch-compile](https://github.com/jo/couch-compile) for more details about
+See [couchdb-compile](https://github.com/jo/couchdb-compile) for more details about
 the CouchDB filesystem mapping used for deploying users, design documents,
 normal documents and replications.
 
