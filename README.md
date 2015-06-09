@@ -69,6 +69,7 @@ bootstrap(url, source[, options], callback)
 
 * `url` - CouchDB server URL
 * `source` - directory holding the bootstrap tree
+* `options.concurrency` - Limit number of concurrent requests. Defaults to `100`.
 * `options.multipart` - When set to `true`, attachments are saved via multipart api.
 * `callback` - called when done with a `response` object describing the status of all operations.
 
