@@ -31,8 +31,9 @@
   "dependencies": {
     "async": "^1.0.0",
     "couchdb-configure": "^1.1.1",
-    "couchdb-push": "^1.4.1",
+    "couchdb-push": "^1.5.0",
     "couchdb-secure": "^1.2.0",
-    "glob": "^5.0.10"
+    "glob": "^5.0.10",
+    "nano": "^6.1.3"
   }
 }

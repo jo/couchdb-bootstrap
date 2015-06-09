@@ -4,7 +4,7 @@ var push = require('../lib/push')
 
 test('push docs', function(t) {
   helper.setup(function() {
-    push(helper.url, helper.source, {}, function(error, response) {
+    push(helper.couch, helper.source, {}, function(error, response) {
       t.notOk(error, 'no error occured')
 
       Object.keys(helper.docs).forEach(function(db) {

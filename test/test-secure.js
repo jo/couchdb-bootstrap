@@ -8,7 +8,7 @@ function setup(callback) {
 
 test('setup database securities', function(t) {
   setup(function() {
-    secure(helper.url, helper.source, {}, function(error, responses) {
+    secure(helper.couch, helper.source, {}, function(error, responses) {
       t.notOk(error, 'no error occured')
 
       helper.dbnames.forEach(function(dbname) {
