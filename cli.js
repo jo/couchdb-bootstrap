@@ -2,9 +2,13 @@
 
 var bootstrap = require('./')
 
-var url = process.argv[2]
-var source = process.argv[3]
+var args = process.argv.slice(2);
+if (!args.length) {
+  return console.log('Usage: \ncouchdb-bootstrap URL [SOURCE]')
+}
 
+var url = args[0];
+var source = args[1] || process.cwd();
 
 bootstrap(url, source, function(error, response) {
   if (error) return console.error(error)
