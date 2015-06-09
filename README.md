@@ -47,7 +47,7 @@ bootstrap('http://localhost:5984', 'project/couchdb', function(error, response) 
 ## CLI
 
 ```sh
-couchdb-bootstrap http://localhost:5984 /path/to/my/project/couchdb
+couchdb-bootstrap http://localhost:5984 project/couchdb
 ```
 
 ## Tests
