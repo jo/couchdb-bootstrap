@@ -26,7 +26,7 @@ CLI:
 Think about CouchDB Bootstrap as a toplevel manager, which reads a directory of
 databases and optional `_config` and hands each file over to the appropriate tool.
 
-In the directory tree below `roject/couchdb/_config.json` is handed to
+In the directory tree below `project/couchdb/_config.json` is handed to
 [couchdb-configure](https://github.com/eHealthAfrica/couchdb-configure),
 `project/couchdb/_replicator/setup-alice.json`,
 `project/couchdb/myapp/_design/myapp.js`
