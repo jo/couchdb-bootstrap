@@ -14,6 +14,16 @@ Status](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap.svg?branch=master)
 * Seed documents
 
 
+CouchDB Bootstrap combines different small tools, which can also be used
+independently. Each of those tools come has a similar API and is shipped with a
+CLI:
+* [couchdb-compile](https://github.com/jo/couchdb-compile) - Handle sources: fs mapping / JSON / CommonJS
+* [couchdb-configure](https://github.com/eHealthAfrica/couchdb-configure) - Configure CouchDB
+* [couchdb-ensure](https://github.com/eHealthAfrica/couchdb-ensure) - Create database unless exists
+* [couchdb-push](https://github.com/jo/couchdb-push) - Push documens: users, replications, design docs and normal documents
+* [couchdb-secure](https://github.com/eHealthAfrica/couchdb-secure) - Secure databases: write security object
+
+
 ## Directory
 
 ```
@@ -66,7 +76,7 @@ bootstrap('http://localhost:5984', 'project/couchdb', function(error, response) 
 couchdb-bootstrap URL [SOURCE]
 ```
 
-When `SOURCE` is omitted the current directory will be used.
+When `SOURCE` is omitted, the current directory will be used.
 
 ### Example
 
