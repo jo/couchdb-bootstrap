@@ -17,7 +17,7 @@ Status](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap.svg?branch=master)
 ## Directory
 
 ```
-/path/to/my/project/couchdb
+project/couchdb
 ├── _config.json
 ├── _replicator
 │   ├── setup-alice.json
