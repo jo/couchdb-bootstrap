@@ -1,13 +1,17 @@
 # CouchDB Bootstrap
-Bootstrap CouchDB database:
-
-- [x] Configure CouchDB
-- [x] Create Databases unless they exist
-- [x] Setup `_security` Settings
-- [x] Deploy (Design) Documents, Replications and Users
+Bootstrap CouchDB server from CLI or API.
 
 [![Build
 Status](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap.svg?branch=master)](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap)
+
+
+* Configure CouchDB
+* Create users
+* Create databases (unless they exist)
+* Setup database `_security` object
+* Deploy design documents
+* Initiate replications
+* Seed documents
 
 
 ## Directory
