@@ -22,20 +22,26 @@ Status](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap.svg?branch=master)
 │   └── _security.json
 └── bobdb
     ├── _design
-    │   └── myapp
-    │       ├── validate_doc_update.js
-    │       └── views
-    │           └── by-date
-    │               ├── map.js
-    │               └── reduce
-    └── _security.json
+    │   └── myapp.js
+    ├── _security.json
+    └── adoc.json
 ```
 
-See [couchdb-compile](https://github.com/jo/couchdb-compile) for more details about
-the CouchDB filesystem mapping used for deploying users, design documents,
-normal documents and replications.
+See [couchdb-compile](https://github.com/jo/couchdb-compile) for more details
+about the CouchDB Filesystem Mapping.
 
 ## API
+
+```js
+bootstrap(url, source[, options], callback)
+```
+
+* `url` - CouchDB server URL
+* `source` - directory holding the bootstrap tree
+* `options.multipart` - When set to `true`, attachments are saved via multipart api.
+* `callback` - called when done with a `response` object describing the status of all operations.
+
+### Example
 
 ```js
 var bootstrap = require('couchdb-bootstrap')
@@ -44,7 +50,16 @@ bootstrap('http://localhost:5984', 'project/couchdb', function(error, response) 
 })
 ```
 
+
 ## CLI
+
+```sh
+couchdb-bootstrap URL [SOURCE]
+```
+
+When `SOURCE` is omitted the current directory will be used.
+
+### Example
 
 ```sh
 couchdb-bootstrap http://localhost:5984 project/couchdb
