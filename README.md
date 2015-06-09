@@ -8,7 +8,7 @@ Status](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap.svg?branch=master)
 * Configure CouchDB
 * Create users
 * Create databases (unless they exist)
-* Setup database `_security` object
+* Setup database \_security object
 * Deploy design documents
 * Initiate replications
 * Seed documents
