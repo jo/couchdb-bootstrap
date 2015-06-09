@@ -19,16 +19,21 @@ Status](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap.svg?branch=master)
 ```
 /path/to/my/project/couchdb
 ├── _config.json
+├── _replicator
+│   ├── setup-alice.json
+│   └── setup-bob.json
 ├── _users
 │   ├── alice.json
 │   └── bob.json
-├── alicedb
+├── myapp
+│   ├── _design
+│   │   └── myapp.js
+│   ├── _security.json
+│   └── adoc.json
+├── myapp-alice
 │   └── _security.json
-└── bobdb
-    ├── _design
-    │   └── myapp.js
-    ├── _security.json
-    └── adoc.json
+└── myapp-bob
+    └── _security.json
 ```
 
 See [couchdb-compile](https://github.com/jo/couchdb-compile) for more details
