@@ -15,8 +15,8 @@ module.exports = function(url, source, options, callback) {
   options = options || {}
 
   async.series({
-    'configure': configure.bind(this, url, source, options),
-    'setup database securities': secure.bind(this, url, source, options),
-    'deploy documents': push.bind(this, url, source, options)
+    configure: configure.bind(this, url, source, options),
+    secure: secure.bind(this, url, source, options),
+    push: push.bind(this, url, source, options)
   }, callback)
 }
