@@ -34,6 +34,7 @@
     "couchdb-push": "^1.5.0",
     "couchdb-secure": "^1.2.0",
     "glob": "^5.0.10",
+    "minimist": "^1.1.1",
     "nano": "^6.1.3"
   }
 }

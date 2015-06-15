@@ -69,8 +69,9 @@ bootstrap(url, source[, options], callback)
 
 * `url` - CouchDB server URL
 * `source` - directory holding the bootstrap tree
+* `options.index` - When set to `true`, folders are searched for `index.js`, which, if present, is treated as CommonJS module. Default is `false`.
 * `options.concurrency` - Limit number of concurrent requests. Defaults to `100`.
-* `options.multipart` - When set to `true`, attachments are saved via multipart api.
+* `options.multipart` - When set to `true`, attachments are saved via multipart api. Default is `false`.
 * `callback` - called when done with a `response` object describing the status of all operations.
 
 ### Example
@@ -86,10 +87,11 @@ bootstrap('http://localhost:5984', 'project/couchdb', function(error, response) 
 ## CLI
 
 ```sh
-couchdb-bootstrap URL [SOURCE]
+couchdb-bootstrap URL [SOURCE] [OPTIONS]
 ```
 
 When `SOURCE` is omitted, the current directory will be used.
+`OPTIONS` can be `--index`, '--concurrency' or `--multipart`, see above.
 
 ### Example
 
