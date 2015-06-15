@@ -91,7 +91,8 @@ couchdb-bootstrap URL [SOURCE] [OPTIONS]
 ```
 
 When `SOURCE` is omitted, the current directory will be used.
-`OPTIONS` can be `--index`, '--concurrency' or `--multipart`, see above.
+`options.index` is always true.
+`OPTIONS` can be '--concurrency' or `--multipart`, see above.
 
 ### Example
 
