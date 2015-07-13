@@ -1,6 +1,6 @@
 var path = require('path')
 var async = require('async')
-var nano = require('nano')
+var nanoOption = require('nano-option')
 
 var configure = require('./lib/configure')
 var secure = require('./lib/secure')
@@ -12,7 +12,7 @@ module.exports = function(url, source, options, callback) {
     options = {}
   }
 
-  var couch = typeof url.config === 'object' ? url : nano(url)
+  var couch = nanoOption(url)
   source = path.resolve(process.cwd(), source)
   options = options || {}
 
