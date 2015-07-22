@@ -91,6 +91,8 @@ bootstrap('http://localhost:5984', 'project/couchdb', function(error, response) 
 couchdb-bootstrap URL [SOURCE] [OPTIONS]
 ```
 
+Or use the shortcurt `cdbb`.
+
 When `SOURCE` is omitted, the current directory will be used.
 `options.index` is always true.
 `OPTIONS` can be '--concurrency', `--multipart` or `--watch`, see above.
