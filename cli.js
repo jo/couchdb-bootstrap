@@ -3,7 +3,7 @@ var minimist = require('minimist')
 var bootstrap = require('./')
 
 var options = minimist(process.argv.slice(2), {
-  boolean: 'multipart',
+  boolean: ['multipart', 'watch'],
   string: 'concurrency'
 })
 

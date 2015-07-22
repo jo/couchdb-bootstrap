@@ -72,6 +72,7 @@ bootstrap(url, source[, options], callback)
 * `options.index` - When set to `true`, folders are searched for `index.js`, which, if present, is treated as CommonJS module. Default is `false`.
 * `options.concurrency` - Limit number of concurrent requests. Defaults to `100`.
 * `options.multipart` - When set to `true`, attachments are saved via multipart api. Default is `false`.
+* `options.watch` - When set to `true`, documents are pushed on filesystem change. Default is `false`.
 * `callback` - called when done with a `response` object describing the status of all operations.
 
 ### Example
@@ -92,7 +93,7 @@ couchdb-bootstrap URL [SOURCE] [OPTIONS]
 
 When `SOURCE` is omitted, the current directory will be used.
 `options.index` is always true.
-`OPTIONS` can be '--concurrency' or `--multipart`, see above.
+`OPTIONS` can be '--concurrency', `--multipart` or `--watch`, see above.
 
 ### Example
 
