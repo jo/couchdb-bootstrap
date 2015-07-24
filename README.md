@@ -1,8 +1,7 @@
 # CouchDB Bootstrap
 Bootstrap CouchDB server from CLI or API.
 
-[![Build
-Status](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap.svg?branch=master)](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap)
+[![Build Status](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap.svg?branch=master)](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap)
 
 
 * Configure CouchDB
@@ -43,6 +42,8 @@ project/couchdb
 │   ├── _security.json
 │   └── adoc.json
 ├── myapp-alice
+│   ├── doc1.json
+│   ├── doc2-commonjs.js
 │   └── _security.json
 └── myapp-bob
     └── _security.json
