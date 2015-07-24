@@ -49,11 +49,11 @@ project/couchdb
 ```
 
 In the directory tree above `project/couchdb/_config.json` is handed to
-[couchdb-configure](https://github.com/eHealthAfrica/couchdb-configure),   
+[couchdb-configure](https://github.com/eHealthAfrica/couchdb-configure),
 `project/couchdb/_replicator/setup-alice.json`,
 `project/couchdb/myapp/_design/myapp.js`
 `project/couchdb/myapp/adoc.json` are handed (beside others) to
-[couchdb-push](https://github.com/jo/couchdb-push)   
+[couchdb-push](https://github.com/jo/couchdb-push)
 and `project/couchdb/myapp-alice/_security.json` to
 [couchdb-secure](https://github.com/eHealthAfrica/couchdb-secure).
 
@@ -73,6 +73,7 @@ bootstrap(url, source[, options], callback)
 * `options.concurrency` - Limit number of concurrent requests. Defaults to `100`.
 * `options.multipart` - When set to `true`, attachments are saved via multipart api. Default is `false`.
 * `options.watch` - When set to `true`, documents are pushed on filesystem change. Default is `false`.
+* `options.mapDbName` - Set to `object` or `function` to map directories to custom database names
 * `callback` - called when done with a `response` object describing the status of all operations.
 
 ### Example
