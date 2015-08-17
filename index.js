@@ -1,6 +1,7 @@
 var path = require('path')
 var async = require('async')
 var nanoOption = require('nano-option')
+var assert = require('assert')
 
 var configure = require('./lib/configure')
 var secure = require('./lib/secure')
@@ -13,6 +14,10 @@ module.exports = function(url, source, options, callback) {
   }
 
   var couch = nanoOption(url)
+
+  assert(typeof couch.request === 'function',
+    'URL must point to the root of a CouchDB server (not to a database).')
+
   source = path.resolve(process.cwd(), source)
   options = options || {}
 
