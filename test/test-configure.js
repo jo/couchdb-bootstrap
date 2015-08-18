@@ -3,7 +3,9 @@ var helper = require('./helper')
 var configure = require('../lib/configure')
 
 test('configure', function(t) {
-  helper.clearConfig(function() {
+  helper.clearConfig(function(error) {
+    t.notOk(error, 'no error occured')
+
     configure(helper.couch, helper.source, {}, function(error, responses) {
       t.notOk(error, 'no error occured')
 

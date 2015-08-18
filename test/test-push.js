@@ -3,7 +3,9 @@ var helper = require('./helper')
 var push = require('../lib/push')
 
 test('push docs', function(t) {
-  helper.setup(function() {
+  helper.setup(function(error) {
+    t.notOk(error, 'no error occured')
+
     push(helper.couch, helper.source, {}, function(error, response) {
       t.notOk(error, 'no error occured')
 

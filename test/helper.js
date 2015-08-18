@@ -43,6 +43,7 @@ exports.clearConfig = function(callback) {
   exports.couch.request({
     path: '_config/' + exports.configSection
   }, function(error, config) {
+    if (error) return callback(error)
     async.map(Object.keys(config), function(key, next) {
       exports.couch.request({
         method: 'DELETE',

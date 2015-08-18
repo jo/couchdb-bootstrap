@@ -7,7 +7,9 @@ function setup(callback) {
 }
 
 test('setup database securities', function(t) {
-  setup(function() {
+  setup(function(error) {
+    t.notOk(error, 'no error occured')
+
     secure(helper.couch, helper.source, {}, function(error, responses) {
       t.notOk(error, 'no error occured')
 
