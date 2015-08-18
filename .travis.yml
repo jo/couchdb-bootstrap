@@ -10,6 +10,8 @@ node_js:
   - iojs-v1
   - '0.12'
   - '0.10'
+services:
+  - couchdb
 before_install:
   - npm i -g npm@^2.0.0
 before_script:
