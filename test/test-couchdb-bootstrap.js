@@ -4,7 +4,7 @@ var bootstrap = require('..')
 
 test('basics', function(t) {
   bootstrap(helper.url, helper.source, function(error, response) {
-    t.notOk(error, 'no error occured')
+    t.error(error, 'no error occured')
 
     t.end()
   })

@@ -4,10 +4,10 @@ var push = require('../lib/push')
 
 test('push docs', function(t) {
   helper.setup(function(error) {
-    t.notOk(error, 'no error occured')
+    t.error(error, 'no error occured')
 
     push(helper.couch, helper.source, {}, function(error, response) {
-      t.notOk(error, 'no error occured')
+      t.error(error, 'no error occured')
 
       Object.keys(helper.docs).forEach(function(db) {
         t.ok(db in response, db + ' included')
