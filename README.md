@@ -77,7 +77,7 @@ bootstrap(url, source[, options], callback)
 * `options.mapDbName` - Set to `object` or `function` to map directories to custom database names
 * `callback` - called when done with a `response` object describing the status of all operations.
 
-### Example
+### API Example
 
 ```js
 var bootstrap = require('couchdb-bootstrap')
@@ -99,7 +99,7 @@ When `SOURCE` is omitted, the current directory will be used.
 `options.index` is always true.
 `OPTIONS` can be '--concurrency', `--multipart` or `--watch`, see above.
 
-### Example
+### CLI Example
 
 ```sh
 couchdb-bootstrap http://localhost:5984 project/couchdb
