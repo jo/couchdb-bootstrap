@@ -6,6 +6,8 @@ cache:
 notifications:
   email: false
 node_js:
+  - 4
+  - iojs-v3
   - iojs-v2
   - iojs-v1
   - '0.12'
@@ -16,8 +18,5 @@ before_install:
   - npm i -g npm@^2.0.0
 before_script:
   - npm prune
-  - 'curl -Lo travis_after_all.py https://git.io/vLSON'
 after_success:
-  - python travis_after_all.py
-  - export $(cat .to_export_back)
   - npm run semantic-release
