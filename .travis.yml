@@ -20,3 +20,7 @@ before_script:
   - npm prune
 after_success:
   - npm run semantic-release
+branches:
+  except:
+    # ignore git tags created by semantic-release, like "v1.2.3"
+    - /^v\d+\.\d+\.\d+$/
