@@ -28,17 +28,17 @@
   "homepage": "https://github.com/eHealthAfrica/couchdb-bootstrap#readme",
   "devDependencies": {
     "nano": "^6.1.5",
-    "tap-spec": "^4.1.0",
-    "tape": "^4.2.1",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.2.2",
     "semantic-release": "^6.0.3"
   },
   "dependencies": {
-    "async": "^1.4.2",
+    "async": "^1.5.0",
     "couchdb-configure": "^1.4.1",
     "couchdb-push": "^2.2.2",
     "couchdb-secure": "^1.4.1",
-    "glob": "^5.0.15",
+    "glob": "^6.0.1",
     "minimist": "^1.2.0",
-    "nano-option": "^1.1.1"
+    "nano-option": "^1.2.1"
   }
 }
