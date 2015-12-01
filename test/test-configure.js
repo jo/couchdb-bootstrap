@@ -18,3 +18,20 @@ test('configure', function(t) {
     })
   })
 })
+
+test('configure with trailing slash', function(t) {
+  helper.clearConfig(function(error) {
+    t.error(error, 'no error occured')
+
+    configure(helper.url + '/', helper.source, {}, function(error, responses) {
+      t.error(error, 'no error occured')
+
+      helper.couch.request({
+        path: '_config/couchdb-bootstrap/foo'
+      }, function(error, config) {
+        t.equal(config, 'bar')
+        t.end()
+      })
+    })
+  })
+})
