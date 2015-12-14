@@ -2,6 +2,7 @@
   "name": "couchdb-bootstrap",
   "description": "Bootstrap projects: configure CouchDB, setup security, deploy ddocs and create users.",
   "main": "index.js",
+  "version": "0.0.0-semantically-released",
   "bin": {
     "couchdb-bootstrap": "cli.js",
     "cdbb": "cli.js"
