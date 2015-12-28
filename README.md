@@ -4,14 +4,13 @@ Bootstrap CouchDB server from CLI or API.
 [![Build Status](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap.svg?branch=master)](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap)
 
 
-* Configure CouchDB
-* Create users
-* Create databases (unless they exist)
-* Setup database \_security object
-* Deploy design documents
-* Initiate replications
-* Seed documents
-
+* set and override `/_config`
+* create databases (unless existent)
+* create and update database \_security objects
+* create and update user accounts
+* create and update design documents
+* create and update replication documents
+* create and update seed documents
 
 CouchDB Bootstrap combines different small tools, which can also be used
 independently. Each of those tools come has a similar API and is shipped with a
