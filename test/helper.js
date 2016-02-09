@@ -1,7 +1,5 @@
 var path = require('path')
 var async = require('async')
-var nano = require('nano')
-
 
 exports.docs = {
   '_users': [
@@ -18,7 +16,7 @@ exports.docs = {
 exports.configSection = 'couchdb-bootstrap'
 
 exports.dbnames = Object.keys(exports.docs)
-  .filter(function(dbname) {
+  .filter(function (dbname) {
     return dbname[0] !== '_'
   })
 
@@ -27,11 +25,11 @@ exports.source = path.join(__dirname, 'fixtures')
 
 exports.couch = require('nano')(exports.url)
 
-exports.setup = function(callback) {
+exports.setup = function (callback) {
   async.each(exports.dbnames, exports.couch.db.destroy, callback)
 }
 
-exports.createDatabases = function(callback) {
+exports.createDatabases = function (callback) {
   async.each(exports.dbnames, exports.couch.db.create, callback)
 }
 
@@ -39,12 +37,12 @@ exports.createDatabases = function(callback) {
 // You cannot delete an entire section:
 // $ curl -XDELETE http://localhost:5984/_config/couchdb-bootstrap
 // {"error":"method_not_allowed","reason":"Only GET,PUT,DELETE allowed"}
-exports.clearConfig = function(callback) {
+exports.clearConfig = function (callback) {
   exports.couch.request({
     path: '_config/' + exports.configSection
-  }, function(error, config) {
+  }, function (error, config) {
     if (error) return callback(error)
-    async.map(Object.keys(config), function(key, next) {
+    async.map(Object.keys(config), function (key, next) {
       exports.couch.request({
         method: 'DELETE',
         path: '_config/' + exports.configSection + '/' + encodeURIComponent(key)

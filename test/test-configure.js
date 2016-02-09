@@ -1,17 +1,18 @@
-var test = require('tape')
+var test = require('tap').test
 var helper = require('./helper')
 var configure = require('../lib/configure')
 
-test('configure', function(t) {
-  helper.clearConfig(function(error) {
-    t.error(error, 'no error occured')
+test('configure', function (t) {
+  helper.clearConfig(function (error) {
+    t.error(error)
 
-    configure(helper.couch, helper.source, {}, function(error, responses) {
-      t.error(error, 'no error occured')
+    configure(helper.couch, helper.source, {}, function (error, responses) {
+      t.error(error)
 
       helper.couch.request({
         path: '_config/couchdb-bootstrap/foo'
-      }, function(error, config) {
+      }, function (error, config) {
+        t.error(error)
         t.equal(config, 'bar')
         t.end()
       })
@@ -19,16 +20,17 @@ test('configure', function(t) {
   })
 })
 
-test('configure with trailing slash', function(t) {
-  helper.clearConfig(function(error) {
-    t.error(error, 'no error occured')
+test('configure with trailing slash', function (t) {
+  helper.clearConfig(function (error) {
+    t.error(error)
 
-    configure(helper.url + '/', helper.source, {}, function(error, responses) {
-      t.error(error, 'no error occured')
+    configure(helper.url + '/', helper.source, {}, function (error, responses) {
+      t.error(error)
 
       helper.couch.request({
         path: '_config/couchdb-bootstrap/foo'
-      }, function(error, config) {
+      }, function (error, config) {
+        t.error(error)
         t.equal(config, 'bar')
         t.end()
       })

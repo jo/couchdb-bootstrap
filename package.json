@@ -8,7 +8,8 @@
     "cdbb": "cli.js"
   },
   "scripts": {
-    "test": "tape test/*.js | tap-spec",
+    "pretest": "standard",
+    "test": "tap --coverage test/test-*.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -29,9 +30,11 @@
   "homepage": "https://github.com/eHealthAfrica/couchdb-bootstrap#readme",
   "devDependencies": {
     "nano": "^6.2.0",
+    "semantic-release": "^6.0.3",
+    "standard": "^6.0.4",
+    "tap": "^5.4.3",
     "tap-spec": "^4.1.1",
-    "tape": "^4.4.0",
-    "semantic-release": "^6.0.3"
+    "tape": "^4.4.0"
   },
   "dependencies": {
     "async": "^1.5.2",
@@ -41,5 +44,10 @@
     "glob": "^6.0.4",
     "minimist": "^1.2.0",
     "nano-option": "^1.2.2"
+  },
+  "standard": {
+    "ignore": [
+      "test/fixtures/**/*"
+    ]
   }
 }

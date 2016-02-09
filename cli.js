@@ -8,13 +8,14 @@ var options = minimist(process.argv.slice(2), {
 })
 
 if (!options._.length) {
-  return console.log('Usage: \ncouchdb-bootstrap URL [SOURCE] [OPTIONS]')
+  console.log('Usage: \ncouchdb-bootstrap URL [SOURCE] [OPTIONS]')
+  process.exit()
 }
 
 var url = options._[0]
 var source = options._[1] || process.cwd()
 
-bootstrap(url, source, options, function(error, response) {
+bootstrap(url, source, options, function (error, response) {
   if (error) return console.error(error)
 
   console.log(JSON.stringify(response, null, '  '))

@@ -7,7 +7,7 @@ var configure = require('./lib/configure')
 var secure = require('./lib/secure')
 var push = require('./lib/push')
 
-module.exports = function(url, source, options, callback) {
+module.exports = function (url, source, options, callback) {
   if (typeof options === 'function') {
     callback = options
     options = {}
