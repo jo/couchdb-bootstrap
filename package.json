@@ -40,6 +40,6 @@
     "couchdb-secure": "^1.4.1",
     "glob": "^6.0.1",
     "minimist": "^1.2.0",
-    "nano-option": "^1.2.1"
+    "nano-option": "^1.2.2"
   }
 }
