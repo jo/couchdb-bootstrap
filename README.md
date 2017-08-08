@@ -96,7 +96,7 @@ Or use the shortcurt `cdbb`.
 
 When `SOURCE` is omitted, the current directory will be used.
 `options.index` is always true.
-`OPTIONS` can be '--concurrency', `--multipart`, `--watch` or `--mapDbName='{"old-name": "new-name"}'`, see above.
+`OPTIONS` can be `--concurrency`, `--multipart`, `--watch` or `--mapDbName='{"old-name": "new-name"}'`, see above.
 
 ### CLI Example
 
