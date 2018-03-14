@@ -1,7 +1,7 @@
 # CouchDB Bootstrap
 Bootstrap CouchDB server from CLI or API.
 
-[![Build Status](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap.svg?branch=master)](https://travis-ci.org/eHealthAfrica/couchdb-bootstrap)
+[![Build Status](https://travis-ci.org/jo/couchdb-bootstrap.svg?branch=master)](https://travis-ci.org/jo/couchdb-bootstrap)
 
 
 * set and override `/_config`
@@ -16,10 +16,10 @@ CouchDB Bootstrap combines different small tools, which can also be used
 independently. Each of those tools come has a similar API and is shipped with a
 CLI:
 * [couchdb-compile](https://github.com/jo/couchdb-compile) - Handle sources: fs mapping / JSON / CommonJS
-* [couchdb-configure](https://github.com/eHealthAfrica/couchdb-configure) - Configure CouchDB
-* [couchdb-ensure](https://github.com/eHealthAfrica/couchdb-ensure) - Create database unless exists
+* [couchdb-configure](https://github.com/jo/couchdb-configure) - Configure CouchDB
+* [couchdb-ensure](https://github.com/jo/couchdb-ensure) - Create database unless exists
 * [couchdb-push](https://github.com/jo/couchdb-push) - Push documents: users, replications, design docs and normal documents
-* [couchdb-secure](https://github.com/eHealthAfrica/couchdb-secure) - Secure databases: write security object
+* [couchdb-secure](https://github.com/jo/couchdb-secure) - Secure databases: write security object
 
 ## Directory
 
@@ -49,13 +49,13 @@ project/couchdb
 ```
 
 In the directory tree above `project/couchdb/_config.json` is handed to
-[couchdb-configure](https://github.com/eHealthAfrica/couchdb-configure),
+[couchdb-configure](https://github.com/jo/couchdb-configure),
 `project/couchdb/_replicator/setup-alice.json`,
 `project/couchdb/myapp/_design/myapp.js`
 `project/couchdb/myapp/adoc.json` are handed (beside others) to
 [couchdb-push](https://github.com/jo/couchdb-push)
 and `project/couchdb/myapp-alice/_security.json` to
-[couchdb-secure](https://github.com/eHealthAfrica/couchdb-secure).
+[couchdb-secure](https://github.com/jo/couchdb-secure).
 
 See [couchdb-compile](https://github.com/jo/couchdb-compile) for more details
 about the CouchDB Filesystem Mapping on a document / security object / config
