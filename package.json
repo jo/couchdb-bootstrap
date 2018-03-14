@@ -9,7 +9,7 @@
   },
   "scripts": {
     "pretest": "standard",
-    "test": "tap --coverage test/test-*.js",
+    "test": "tap --reporter=spec test/test-*.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
