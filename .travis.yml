@@ -1,26 +1,17 @@
-sudo: false
 language: node_js
 cache:
   directories:
-    - node_modules
+    - ~/.npm
 notifications:
   email: false
 node_js:
-  - 4
-  - iojs-v3
-  - iojs-v2
-  - iojs-v1
-  - '0.12'
-  - '0.10'
+  - '9'
+  - '8'
+  - '6'
 services:
   - couchdb
-before_install:
-  - npm i -g npm@^2.0.0
-before_script:
-  - npm prune
 after_success:
-  - npm run semantic-release
+  - npm run travis-deploy-once "npm run semantic-release"
 branches:
   except:
-    # ignore git tags created by semantic-release, like "v1.2.3"
     - /^v\d+\.\d+\.\d+$/

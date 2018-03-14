@@ -2,7 +2,7 @@
   "name": "couchdb-bootstrap",
   "description": "Bootstrap projects: configure CouchDB, setup security, deploy ddocs and create users.",
   "main": "index.js",
-  "version": "0.0.0-semantically-released",
+  "version": "0.0.0-development",
   "bin": {
     "couchdb-bootstrap": "cli.js",
     "cdbb": "cli.js"
@@ -10,7 +10,8 @@
   "scripts": {
     "pretest": "standard",
     "test": "tap --reporter=spec test/test-*.js",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once"
   },
   "repository": {
     "type": "git",
@@ -30,11 +31,12 @@
   "homepage": "https://github.com/jo/couchdb-bootstrap#readme",
   "devDependencies": {
     "nano": "^6.2.0",
-    "semantic-release": "^6.0.3",
+    "semantic-release": "^15.0.3",
     "standard": "^7.0.0",
     "tap": "^5.4.3",
     "tap-spec": "^4.1.1",
-    "tape": "^4.4.0"
+    "tape": "^4.4.0",
+    "travis-deploy-once": "^4.4.0"
   },
   "dependencies": {
     "async": "^1.5.2",
