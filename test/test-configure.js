@@ -6,8 +6,15 @@ test('configure', function (t) {
   helper.clearConfig(function (error) {
     t.error(error)
 
-    configure(helper.couch, helper.source, {}, function (error, responses) {
+    configure(helper.couch, helper.source, {}, function (error, response) {
       t.error(error)
+
+      t.same(response, {
+        'couchdb-bootstrap/foo': {
+          ok: true,
+          value: 'bar'
+        }
+      }, 'correct response')
 
       helper.couch.request({
         path: '_config/couchdb-bootstrap/foo'

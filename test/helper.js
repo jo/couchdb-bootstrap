@@ -21,7 +21,7 @@ exports.dbnames = Object.keys(exports.docs)
   })
 
 exports.url = process.env.COUCH || 'http://localhost:5984'
-exports.source = path.join(__dirname, 'fixtures')
+exports.source = path.join(__dirname, 'fixtures/bootstrap')
 
 exports.couch = require('nano')(exports.url)
 
