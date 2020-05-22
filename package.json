@@ -41,11 +41,11 @@
   "dependencies": {
     "async": "^2.6.0",
     "couchdb-compile": "^1.10.0",
-    "couchdb-configure": "^1.6.0",
+    "couchdb-configure": "git@github.com:neighbourhoodie/couchdb-configure.git#fix/two-dot-x",
     "couchdb-push": "^2.5.0",
     "couchdb-secure": "^1.5.0",
     "glob": "^7.1.2",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.5",
     "nano-option": "^1.3.0"
   },
   "standard": {

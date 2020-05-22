@@ -14,12 +14,15 @@ function check (t, response, done) {
       }
     }, 'correct response')
 
-    helper.couch.request({
-      path: '_config/couchdb-bootstrap/foo'
-    }, function (error, config) {
+    helper.getConfigPath((error, configPath) => {
       s.error(error)
-      s.equal(config, 'bar')
-      s.end()
+      helper.couch.request({
+        path: `${configPath}/couchdb-bootstrap/foo`
+      }, function (error, config) {
+        s.error(error)
+        s.equal(config, 'bar')
+        s.end()
+      })
     })
   })
 
