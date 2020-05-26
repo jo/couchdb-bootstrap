@@ -45,17 +45,26 @@ exports.getVersion = function (callback) {
   })
 }
 
-let configPath
+let configPaths
 exports.getConfigPath = function (callback) {
-  if (configPath) { return callback(null, configPath) } else {
+  if (configPaths) { return callback(null, configPaths) } else {
     exports.getVersion((error, version) => {
       if (error) { return callback(error) } else {
         if (version > '2') {
-          configPath = '_node/_local/_config/'
+          exports.couch.request({
+            path: '_membership'
+          }, (error, membership) => {
+            if (error) { return callback(error) } else {
+              configPaths = membership.all_nodes.map((node) => {
+                return `_node/${node}/_config/`
+              })
+              return callback(null, configPaths)
+            }
+          })
         } else {
-          configPath = '_config/'
+          configPaths = ['_config/']
+          return callback(null, configPaths)
         }
-        return callback(null, configPath)
       }
     })
   }
