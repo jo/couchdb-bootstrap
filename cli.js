@@ -20,7 +20,10 @@ if (options.mapDbName) {
 }
 
 bootstrap(url, source, options, function (error, response) {
-  if (error) return console.error(error)
+  if (error) {
+    process.exitCode = 1
+    return console.error(error)
+  }
 
   console.log(JSON.stringify(response, null, '  '))
 })
