@@ -1,9 +1,6 @@
 # CouchDB Bootstrap
 Bootstrap CouchDB server from CLI or API.
 
-[![Build Status](https://travis-ci.org/jo/couchdb-bootstrap.svg?branch=master)](https://travis-ci.org/jo/couchdb-bootstrap)
-
-
 * set and override `/_config`
 * create databases (unless existent)
 * create and update database \_security objects
