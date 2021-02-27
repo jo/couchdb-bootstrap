@@ -31,17 +31,16 @@
   "homepage": "https://github.com/jo/couchdb-bootstrap#readme",
   "devDependencies": {
     "nano": "^6.4.3",
-    "semantic-release": "^15.0.3",
+    "semantic-release": "^17.4.0",
     "standard": "^11.0.0",
     "tap": "^11.1.2",
     "tap-spec": "^4.1.1",
-    "tape": "^4.9.0",
-    "travis-deploy-once": "^4.4.0"
+    "tape": "^4.9.0"
   },
   "dependencies": {
     "async": "^2.6.0",
     "couchdb-compile": "^1.10.0",
-    "couchdb-configure": "^1.6.0",
+    "couchdb-configure": "^1.6.1",
     "couchdb-push": "^2.5.0",
     "couchdb-secure": "^1.5.0",
     "glob": "^7.1.2",
