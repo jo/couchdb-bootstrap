@@ -33,20 +33,61 @@ exports.createDatabases = function (callback) {
   async.each(exports.dbnames, exports.couch.db.create, callback)
 }
 
+let version
+exports.getVersion = function (callback) {
+  if (version) { return callback(null, version) }
+  exports.couch.request({
+    path: ''
+  }, (error, info) => {
+    if (error) { return callback(error) }
+    version = info.version
+    return callback(null, info.version)
+  })
+}
+
+let configPaths
+exports.getConfigPath = function (callback) {
+  if (configPaths) { return callback(null, configPaths) } else {
+    exports.getVersion((error, version) => {
+      if (error) { return callback(error) } else {
+        if (version > '2') {
+          exports.couch.request({
+            path: '_membership'
+          }, (error, membership) => {
+            if (error) { return callback(error) } else {
+              configPaths = membership.all_nodes.map((node) => {
+                return `_node/${node}/_config/`
+              })
+              return callback(null, configPaths)
+            }
+          })
+        } else {
+          configPaths = ['_config/']
+          return callback(null, configPaths)
+        }
+      }
+    })
+  }
+}
+
 // There is an issue with section deletion in CouchDB.
 // You cannot delete an entire section:
 // $ curl -XDELETE http://localhost:5984/_config/couchdb-bootstrap
 // {"error":"method_not_allowed","reason":"Only GET,PUT,DELETE allowed"}
 exports.clearConfig = function (callback) {
-  exports.couch.request({
-    path: '_config/' + exports.configSection
-  }, function (error, config) {
-    if (error) return callback(error)
-    async.map(Object.keys(config), function (key, next) {
+  exports.getConfigPath((error, configPath) => {
+    if (error) { return callback(error) } else {
       exports.couch.request({
-        method: 'DELETE',
-        path: '_config/' + exports.configSection + '/' + encodeURIComponent(key)
-      }, next)
-    }, callback)
+        path: configPath + exports.configSection
+      }, function (error, config) {
+        if (error) return callback(error)
+        async.map(Object.keys(config), function (key, next) {
+          exports.couch.request({
+            method: 'DELETE',
+            path: configPath + exports.configSection + '/' + encodeURIComponent(key)
+          }, next)
+        }, callback)
+      })
+    }
   })
 }
