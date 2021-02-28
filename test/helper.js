@@ -1,8 +1,8 @@
-var path = require('path')
-var async = require('async')
+const path = require('path')
+const async = require('async')
 
 exports.docs = {
-  '_users': [
+  _users: [
     'org.couchdb.user:alice@example.com',
     'org.couchdb.user:bob@example.com'
   ],

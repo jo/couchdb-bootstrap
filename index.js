@@ -1,15 +1,15 @@
-var path = require('path')
-var async = require('async')
-var nanoOption = require('nano-option')
-var assert = require('assert')
+const path = require('path')
+const async = require('async')
+const nanoOption = require('nano-option')
+const assert = require('assert')
 
-var compile = require('couchdb-compile')
-var couchdbConfigure = require('couchdb-configure')
-var couchdbSecure = require('couchdb-secure')
-var couchdbPush = require('couchdb-push')
+const compile = require('couchdb-compile')
+const couchdbConfigure = require('couchdb-configure')
+const couchdbSecure = require('couchdb-secure')
+const couchdbPush = require('couchdb-push')
 
-var DOCS_REGEX = /^(_design|_local|[^_].*)$/
-var DBS_REGEX = /^(_users|_dbs|_global_changes|_replicator|[^_].*)$/
+const DOCS_REGEX = /^(_design|_local|[^_].*)$/
+const DBS_REGEX = /^(_users|_dbs|_global_changes|_replicator|[^_].*)$/
 
 function isDb (key) {
   return key.match(DBS_REGEX)
@@ -23,7 +23,7 @@ function groupByDatabase (dbname, callback) {
   return function (error, results) {
     if (error) return callback(error)
 
-    var result = {}
+    const result = {}
     result[dbname] = results
 
     callback(null, result)
@@ -34,7 +34,7 @@ function reduceGroupedResult (callback) {
   return function (error, results) {
     if (error) return callback(error)
 
-    var result = results.reduce(function (memo, res) {
+    const result = results.reduce(function (memo, res) {
       if (typeof res !== 'object') return memo
 
       Object.keys(res).forEach(function (key) {
@@ -62,7 +62,7 @@ module.exports = function (url, source, options, callback) {
     options = {}
   }
 
-  var couch = nanoOption(url)
+  const couch = nanoOption(url)
 
   assert(typeof couch.request === 'function',
     'URL must point to the root of a CouchDB server (not to a database).')
@@ -78,35 +78,35 @@ module.exports = function (url, source, options, callback) {
 
     options.concurrency = 'concurrency' in options ? options.concurrency : 100
 
-    var series = {}
+    const series = {}
 
     if ('_config' in source) series.configure = couchdbConfigure.bind(null, couch, source._config)
 
-    var dbs = Object.keys(source).filter(isDb)
+    const dbs = Object.keys(source).filter(isDb)
 
-    var dbsWithSecurity = dbs.filter(dbname => '_security' in source[dbname])
+    const dbsWithSecurity = dbs.filter(dbname => '_security' in source[dbname])
     if (dbsWithSecurity.length) {
       series.secure = done => {
         async.map(dbsWithSecurity, (dbname, next) => {
-          var db = mapDbName(options, dbname)
+          const db = mapDbName(options, dbname)
           couchdbSecure(couch.use(db), source[dbname]._security, groupByDatabase(db, next))
         }, reduceGroupedResult(done))
       }
     }
 
-    var dbsWithDocs = dbs.filter(dbname => Object.keys(source[dbname]).filter(isDoc).length)
+    const dbsWithDocs = dbs.filter(dbname => Object.keys(source[dbname]).filter(isDoc).length)
     if (dbsWithDocs.length) {
       series.push = done => {
         async.map(dbsWithDocs, (dbname, next) => {
-          var docs = Object.keys(source[dbname])
+          const docs = Object.keys(source[dbname])
             .filter(isDoc)
             .reduce((memo, id) => {
-              var docs = []
+              let docs = []
 
               if (id === '_local') {
                 docs = Object.keys(source[dbname]._local)
                   .map(name => {
-                    var doc = source[dbname]._local[name]
+                    const doc = source[dbname]._local[name]
                     if (!('_id' in doc)) doc._id = '_local/' + name
                     return doc
                   })
@@ -117,7 +117,7 @@ module.exports = function (url, source, options, callback) {
               if (id === '_design') {
                 docs = Object.keys(source[dbname]._design)
                   .map(name => {
-                    var doc = source[dbname]._design[name]
+                    const doc = source[dbname]._design[name]
                     if (!('_id' in doc)) doc._id = '_design/' + name
                     return doc
                   })
@@ -125,14 +125,14 @@ module.exports = function (url, source, options, callback) {
                 return memo.concat(docs)
               }
 
-              var doc = source[dbname][id]
+              const doc = source[dbname][id]
 
               if (!('_id' in doc)) doc._id = id
 
               return memo.concat(doc)
             }, [])
 
-          var db = mapDbName(options, dbname)
+          const db = mapDbName(options, dbname)
           async.mapLimit(docs, options.concurrency, (doc, next) => {
             couchdbPush(couch.use(db), doc, options, next)
           }, groupByDatabase(db, next))

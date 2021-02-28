@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-var minimist = require('minimist')
-var bootstrap = require('./')
+const minimist = require('minimist')
+const bootstrap = require('./')
 
-var options = minimist(process.argv.slice(2), {
+const options = minimist(process.argv.slice(2), {
   boolean: ['multipart', 'watch'],
   string: ['concurrency', 'mapDbName']
 })
@@ -12,8 +12,8 @@ if (!options._.length) {
   process.exit()
 }
 
-var url = options._[0]
-var source = options._[1] || process.cwd()
+const url = options._[0]
+const source = options._[1] || process.cwd()
 
 if (options.mapDbName) {
   options.mapDbName = JSON.parse(options.mapDbName)
