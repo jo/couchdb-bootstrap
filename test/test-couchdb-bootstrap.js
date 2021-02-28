@@ -1,8 +1,8 @@
 const async = require('async')
-var test = require('tap').test
-var helper = require('./helper')
-var bootstrap = require('..')
-var config = require('./fixtures/bootstrap')
+const test = require('tap').test
+const helper = require('./helper')
+const bootstrap = require('..')
+const config = require('./fixtures/bootstrap')
 
 function check (t, response, done) {
   t.test('configure', s => {
@@ -46,8 +46,8 @@ function check (t, response, done) {
     Object.keys(helper.docs).forEach(function (db) {
       s.ok(db in response.push, db + ' included')
 
-      var responses = response.push[db]
-      var docs = helper.docs[db]
+      const responses = response.push[db]
+      const docs = helper.docs[db]
 
       s.equal(responses.length, docs.length, 'correct # of docs pushed')
 

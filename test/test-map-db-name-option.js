@@ -1,6 +1,6 @@
-var test = require('tap').test
-var helper = require('./helper')
-var bootstrap = require('..')
+const test = require('tap').test
+const helper = require('./helper')
+const bootstrap = require('..')
 
 test('options.mapDbName is object', function (t) {
   bootstrap(helper.url, helper.source, {
