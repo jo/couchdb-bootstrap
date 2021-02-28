@@ -3,6 +3,28 @@ name: Node.js CI
 on: [pull_request]
 
 jobs:
+  cluster:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x, 14.x, 15.x]
+        couchdb-version: [2, 3]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Set up CouchDB
+      uses: iamssen/couchdb-github-action@master
+      with:
+        couchdb-version: ${{ matrix.couchdb-version }}
+    - run: npm ci
+    - run: COUCH=http://admin:password@127.0.0.1:5984 npm test
+
+
   single-node:
     runs-on: ubuntu-latest
 
