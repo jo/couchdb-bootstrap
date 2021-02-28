@@ -40,7 +40,7 @@
   "dependencies": {
     "async": "^2.6.0",
     "couchdb-compile": "^1.10.0",
-    "couchdb-configure": "^1.6.1",
+    "couchdb-configure": "^2.0.1",
     "couchdb-push": "^2.5.0",
     "couchdb-secure": "^1.5.0",
     "glob": "^7.1.2",

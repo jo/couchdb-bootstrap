@@ -1,3 +1,4 @@
+const async = require('async')
 var test = require('tap').test
 var helper = require('./helper')
 var bootstrap = require('..')
@@ -14,12 +15,19 @@ function check (t, response, done) {
       }
     }, 'correct response')
 
-    helper.couch.request({
-      path: '_config/couchdb-bootstrap/foo'
-    }, function (error, config) {
+    helper.getConfigPath((error, configPaths) => {
       s.error(error)
-      s.equal(config, 'bar')
-      s.end()
+      const tasks = configPaths.map((configPath) => {
+        return helper.couch.request.bind(null, {
+          path: `${configPath}/couchdb-bootstrap/foo`
+        })
+      })
+      async.series(tasks, function (error, configs) {
+        const config = configs[0][0]
+        s.error(error)
+        s.equal(config, 'bar')
+        s.end()
+      })
     })
   })
 
