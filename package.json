@@ -2,7 +2,6 @@
   "name": "couchdb-bootstrap",
   "description": "Bootstrap projects: configure CouchDB, setup security, deploy ddocs and create users.",
   "main": "index.js",
-  "version": "0.0.0-development",
   "bin": {
     "couchdb-bootstrap": "cli.js",
     "cdbb": "cli.js"
@@ -10,8 +9,7 @@
   "scripts": {
     "pretest": "standard",
     "test": "tap --reporter=spec test/test-*.js",
-    "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once"
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
@@ -51,5 +49,9 @@
     "ignore": [
       "test/fixtures/**/*"
     ]
+  },
+  "version": "0.0.0-development",
+  "release": {
+    "branches": ["main"]
   }
 }
