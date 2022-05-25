@@ -8,7 +8,7 @@
   },
   "scripts": {
     "pretest": "standard",
-    "test": "tap --reporter=spec --lines 90 --branches 60 --statements 90 test/test-*.js --jobs=1",
+    "test": "tap --reporter=spec --lines 70 --branches 50 --statements 70 test/test-*.js --jobs=1",
     "semantic-release": "semantic-release"
   },
   "repository": {

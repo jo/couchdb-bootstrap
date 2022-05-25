@@ -98,10 +98,19 @@ module.exports = function (url, source, options, callback) {
     const dbsWithIndex = dbs.filter(dbname => '_index' in source[dbname])
     if (dbsWithIndex.length) {
       series.index = done => {
-        async.map(dbsWithIndex, (dbname, next) => {
-          const db = mapDbName(options, dbname)
-          couchdbCreateIndex(couch.use(db), source[dbname]._index, groupByDatabase(db, next))
-        }, reduceGroupedResult(done))
+        couch.request({
+          path: ''
+        }, (error, info) => {
+          if (error) { return done(error) }
+          if (info.version < 2) {
+            return done(error, { index: 'not supported by couchdb version ' + info.version })
+          }
+
+          async.map(dbsWithIndex, (dbname, next) => {
+            const db = mapDbName(options, dbname)
+            couchdbCreateIndex(couch.use(db), source[dbname]._index, groupByDatabase(db, next))
+          }, reduceGroupedResult(done))
+        })
       }
     }
 
