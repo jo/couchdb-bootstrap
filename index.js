@@ -121,6 +121,9 @@ module.exports = function (url, source, options, callback) {
           const docs = Object.keys(source[dbname])
             .filter(isDoc)
             .reduce((memo, id) => {
+              if (id === '_security') return memo
+              if (id === '_index') return memo
+
               let docs = []
 
               if (id === '_local') {
