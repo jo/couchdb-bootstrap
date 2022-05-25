@@ -34,6 +34,13 @@ module.exports = {
         ]
       }
     },
+    _index: {
+      index: {
+        fields: ['date']
+      },
+      name: 'by-date',
+      type: 'json'
+    },
     mydoc: {
       _id: 'mydoc-id'
     },

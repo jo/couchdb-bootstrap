@@ -8,6 +8,7 @@ Bootstrap CouchDB server from CLI or API.
 * create and update design documents
 * create and update replication documents
 * create and update seed documents
+* create indexes
 
 CouchDB Bootstrap combines different small tools, which can also be used
 independently. Each of those tools come has a similar API and is shipped with a
@@ -17,6 +18,7 @@ CLI:
 * [couchdb-ensure](https://github.com/jo/couchdb-ensure) - Create database unless exists
 * [couchdb-push](https://github.com/jo/couchdb-push) - Push documents: users, replications, design docs and normal documents
 * [couchdb-secure](https://github.com/jo/couchdb-secure) - Secure databases: write security object
+* [couchdb-create-index](https://github.com/jo/couchdb-create-index) - Add Mango indexes
 
 ## Directory
 
@@ -36,6 +38,7 @@ project/couchdb
 │   ├── _design
 │   │   └── myapp.js
 │   ├── _security.json
+│   ├── _index.json
 │   └── adoc.json
 ├── myapp-alice
 │   ├── doc1.json
@@ -75,6 +78,13 @@ Since couchdb-bootstrap@14.2 it is possible to provide a configuration object:
     mydoc: {
       date: '2018-03-16T19:27:52.361Z',
       title: 'Welcome'
+    },
+    _index: {
+      index: {
+        fields: ['date']
+      },
+      name: 'by-date',
+      type: 'json'
     },
     _design: {
       myapp: {

@@ -6,6 +6,7 @@ const assert = require('assert')
 const compile = require('couchdb-compile')
 const couchdbConfigure = require('couchdb-configure')
 const couchdbSecure = require('couchdb-secure')
+const couchdbCreateIndex = require('couchdb-create-index')
 const couchdbPush = require('couchdb-push')
 
 const DOCS_REGEX = /^(_design|_local|[^_].*)$/
@@ -94,6 +95,25 @@ module.exports = function (url, source, options, callback) {
       }
     }
 
+    const dbsWithIndex = dbs.filter(dbname => '_index' in source[dbname])
+    if (dbsWithIndex.length) {
+      series.index = done => {
+        couch.request({
+          path: ''
+        }, (error, info) => {
+          if (error) { return done(error) }
+          if (info.version < 2) {
+            return done(error, { index: 'not supported by couchdb version ' + info.version })
+          }
+
+          async.map(dbsWithIndex, (dbname, next) => {
+            const db = mapDbName(options, dbname)
+            couchdbCreateIndex(couch.use(db), source[dbname]._index, groupByDatabase(db, next))
+          }, reduceGroupedResult(done))
+        })
+      }
+    }
+
     const dbsWithDocs = dbs.filter(dbname => Object.keys(source[dbname]).filter(isDoc).length)
     if (dbsWithDocs.length) {
       series.push = done => {
@@ -101,6 +121,9 @@ module.exports = function (url, source, options, callback) {
           const docs = Object.keys(source[dbname])
             .filter(isDoc)
             .reduce((memo, id) => {
+              if (id === '_security') return memo
+              if (id === '_index') return memo
+
               let docs = []
 
               if (id === '_local') {
