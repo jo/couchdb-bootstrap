@@ -40,6 +40,24 @@ function check (t, response, done) {
     s.end()
   })
 
+  t.test('index', s => {
+    helper.getVersion((error, version) => {
+      s.error(error)
+
+      if (version < '2') {
+        s.ok(true, 'couchdb version prior 2 did not support Mango')
+        return
+      }
+
+      s.ok('index' in response, 'index response')
+
+      helper.dbnames.forEach(function (dbname) {
+        s.ok(response.secure[dbname].ok, 'response is ok')
+      })
+      s.end()
+    })
+  })
+
   t.test('push', s => {
     s.ok('push' in response, 'push response')
 

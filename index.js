@@ -6,6 +6,7 @@ const assert = require('assert')
 const compile = require('couchdb-compile')
 const couchdbConfigure = require('couchdb-configure')
 const couchdbSecure = require('couchdb-secure')
+const couchdbCreateIndex = require('couchdb-create-index')
 const couchdbPush = require('couchdb-push')
 
 const DOCS_REGEX = /^(_design|_local|[^_].*)$/
@@ -90,6 +91,16 @@ module.exports = function (url, source, options, callback) {
         async.map(dbsWithSecurity, (dbname, next) => {
           const db = mapDbName(options, dbname)
           couchdbSecure(couch.use(db), source[dbname]._security, groupByDatabase(db, next))
+        }, reduceGroupedResult(done))
+      }
+    }
+
+    const dbsWithIndex = dbs.filter(dbname => '_index' in source[dbname])
+    if (dbsWithIndex.length) {
+      series.index = done => {
+        async.map(dbsWithIndex, (dbname, next) => {
+          const db = mapDbName(options, dbname)
+          couchdbCreateIndex(couch.use(db), source[dbname]._index, groupByDatabase(db, next))
         }, reduceGroupedResult(done))
       }
     }

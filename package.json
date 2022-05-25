@@ -37,6 +37,7 @@
     "async": "^3.2.1",
     "couchdb-compile": "^1.11.2",
     "couchdb-configure": "^2.1.0",
+    "couchdb-create-index": "^1.1.0",
     "couchdb-push": "^3.1.0",
     "couchdb-secure": "^2.1.0",
     "glob": "^7.2.0",
